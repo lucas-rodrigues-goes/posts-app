@@ -1,0 +1,53 @@
+#================================================================
+# Parameters
+#================================================================
+@baseUrl = http://localhost:5000
+@contentType = application/json
+
+# User variables
+@username = lucas@gmail.com
+@password = 243io5h3o44534
+
+#================================================================
+# Endpoints
+#================================================================
+
+### GET All users
+GET {{baseUrl}}/user
+
+### GET Single user by Username
+GET {{baseUrl}}/user/username/{{username}}
+
+### GET Single user by ID
+GET {{baseUrl}}/user/1
+
+### POST Register new user
+POST {{baseUrl}}/user
+Content-Type: {{contentType}}
+
+{
+    "username": "{{username}}",
+    "password": "{{password}}"
+}
+
+### PUT Update user (full update)
+PUT {{baseUrl}}/user/1
+Content-Type: {{contentType}}
+
+{
+    "username": "{{username}}_updated",
+    "password": "{{password}}_updated"
+}
+
+### PATCH Update user (partial update)
+PATCH {{baseUrl}}/user/1
+Content-Type: {{contentType}}
+
+{
+    "username": "{{username}}_patched"
+}
+
+### DELETE User
+DELETE {{baseUrl}}/user/1
+
+#================================================================

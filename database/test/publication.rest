@@ -1,0 +1,91 @@
+#================================================================
+# Parameters
+#================================================================
+@baseUrl = http://localhost:5000
+@contentType = application/json
+
+# User variables
+@userId = 1
+@username = lucas@gmail.com
+@publicationTitle = My First Publication
+@publicationText = This is the content of my first publication. It can contain any text I want to share with others.
+
+# Publication variables  
+@publicationId = 1
+@updatedTitle = Updated Publication Title
+@updatedText = This is the updated content of my publication with some new information.
+
+#================================================================
+# Endpoints
+#================================================================
+
+### GET All publications
+GET {{baseUrl}}/publication
+
+### GET Single publication by ID
+GET {{baseUrl}}/publication/{{publicationId}}
+
+### GET Publications by user ID
+GET {{baseUrl}}/publication/user/{{userId}}
+
+### GET Publications by username (convenience route)
+GET {{baseUrl}}/publication/username/{{username}}
+
+### POST Create new publication
+POST {{baseUrl}}/publication
+Content-Type: {{contentType}}
+
+{
+    "user_id": {{userId}},
+    "title": "{{publicationTitle}}",
+    "text": "{{publicationText}}"
+}
+
+### PUT Update publication (full update)
+PUT {{baseUrl}}/publication/{{publicationId}}
+Content-Type: {{contentType}}
+
+{
+    "user_id": {{userId}},
+    "title": "{{updatedTitle}}",
+    "text": "{{updatedText}}"
+}
+
+### PATCH Update publication (partial update - title only)
+PATCH {{baseUrl}}/publication/{{publicationId}}
+Content-Type: {{contentType}}
+
+{
+    "title": "Partially Updated Title"
+}
+
+### PATCH Update publication (partial update - text only)
+PATCH {{baseUrl}}/publication/{{publicationId}}
+Content-Type: {{contentType}}
+
+{
+    "text": "This text has been partially updated while keeping the original title."
+}
+
+### PATCH Update publication (partial update - user_id only)
+PATCH {{baseUrl}}/publication/{{publicationId}}
+Content-Type: {{contentType}}
+
+{
+    "user_id": 2
+}
+
+### PATCH Update publication (partial update - multiple fields)
+PATCH {{baseUrl}}/publication/{{publicationId}}
+Content-Type: {{contentType}}
+
+{
+    "user_id": {{userId}},
+    "title": "Multiple Fields Updated",
+    "text": "Both the title and text have been updated in this partial update."
+}
+
+### DELETE Publication
+DELETE {{baseUrl}}/publication/7
+
+#================================================================

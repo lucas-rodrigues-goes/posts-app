@@ -1,0 +1,113 @@
+#================================================================
+# Parameters
+#================================================================
+@baseUrl = http://localhost:4000
+@contentType = application/json
+
+# User variables
+@username = lucas@gmail.com
+@password = 123456
+
+# Publication variables
+@publicationTitle = My First Publication
+@publicationText = This is the content of my first publication. It can contain any text I want to share with others.
+
+# Publication variables  
+@publicationId = 2
+@updatedTitle = Updated Publication Title
+@updatedText = This is the updated content of my publication with some new information.
+
+# Auth token (will be set after login)
+@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzYzODQxNjYyLCJleHAiOjE3NjM5MjgwNjJ9.pAzgGQXcZv1QifRy1zKLrainZkHGFkCEvCIO6hnk5k4
+
+#================================================================
+# Authentication First
+#================================================================
+
+### Login to get token
+POST {{baseUrl}}/auth/login
+Content-Type: {{contentType}}
+
+{
+    "username": "{{username}}",
+    "password": "{{password}}"
+}
+
+### Register new user (if needed)
+POST {{baseUrl}}/auth/register
+Content-Type: {{contentType}}
+
+{
+    "username": "{{username}}",
+    "password": "{{password}}"
+}
+
+#================================================================
+# Publication Endpoints (All require authentication)
+#================================================================
+
+### GET All publications
+GET {{baseUrl}}/publication
+Authorization: {{authToken}}
+
+### GET Single publication by ID
+GET {{baseUrl}}/publication/{{publicationId}}
+Authorization: {{authToken}}
+
+### GET Publications by username
+GET {{baseUrl}}/publication/username/{{username}}
+Authorization: {{authToken}}
+
+### POST Create new publication (username auto-set from token)
+POST {{baseUrl}}/publication
+Authorization: {{authToken}}
+Content-Type: {{contentType}}
+
+{
+    "title": "{{publicationTitle}}",
+    "text": "{{publicationText}}"
+}
+
+### PUT Update publication (full update)
+PUT {{baseUrl}}/publication/{{publicationId}}
+Authorization: {{authToken}}
+Content-Type: {{contentType}}
+
+{
+    "title": "{{updatedTitle}}",
+    "text": "{{updatedText}}"
+}
+
+### PATCH Update publication (partial update - title only)
+PATCH {{baseUrl}}/publication/{{publicationId}}
+Authorization: {{authToken}}
+Content-Type: {{contentType}}
+
+{
+    "title": "Partially Updated Title"
+}
+
+### PATCH Update publication (partial update - text only)
+PATCH {{baseUrl}}/publication/{{publicationId}}
+Authorization: {{authToken}}
+Content-Type: {{contentType}}
+
+{
+    "text": "This text has been partially updated while keeping the original title."
+}
+
+### PATCH Update publication (partial update - multiple fields)
+PATCH {{baseUrl}}/publication/{{publicationId}}
+Authorization: {{authToken}}
+Content-Type: {{contentType}}
+
+{
+    "title": "Multiple Fields Updated",
+    "text": "Both the title and text have been updated in this partial update."
+}
+
+### DELETE Publication
+DELETE {{baseUrl}}/publication/{{publicationId}}
+Authorization: {{authToken}}
+
+#================================================================

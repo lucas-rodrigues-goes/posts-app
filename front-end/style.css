@@ -1,0 +1,272 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+.screen {
+    display: none;
+}
+
+.screen.active {
+    display: block;
+}
+
+#login-screen.active, #register-screen.active {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#app {
+    height: 100%;
+    width: 100%;
+}
+
+/* Login/Register Styles */
+.login-container {
+    width: 400px;
+    padding: 40px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.login-container h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #2c3e50;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 93%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+.message {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.message.error {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.message.success {
+    background-color: #2ecc71;
+    color: white;
+}
+
+/* Posts Screen Styles */
+.header {
+    background-color: white;
+    color: #2c3e50;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 3px 10px rgba(0,0,0,0.3);
+    position: sticky;
+    top: 0;
+}
+
+.header h1 {
+    font-size: 140%;
+}
+
+.logout-btn {
+    width: auto;
+    padding: 8px 16px;
+    background-color: #2c3e50;
+}
+
+.logout-btn:hover {
+    background-color: #c0392b;
+}
+
+#posts-screen {
+    height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.create-post {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px rgba(0,0,0,0.15);
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.create-post h2 {
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+.posts-list h2 {
+    margin-bottom: 20px;
+    color: #fff;
+    text-shadow: 0px 5px 10px rgba(0,0,0,0.3)
+}
+
+.post {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px rgba(0,0,0,0.15);
+    margin-bottom: 20px;
+    border-left: 4px solid #3498db;
+}
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 25px;
+}
+
+.post-title {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 5px;
+}
+
+.post-author {
+    color: #7f8c8d;
+    font-style: italic;
+}
+
+.post-date {
+    color: #95a5a6;
+    font-size: 0.9em;
+}
+
+.post-content {
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.post-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.post-actions button {
+    width: auto;
+    padding: 8px 16px;
+    font-size: 14px;
+}
+
+.btn-edit {
+    background-color: #2c3e50;
+}
+
+.btn-edit:hover {
+    background-color: #e67e22;
+}
+
+.btn-delete {
+    background-color: #2c3e50;
+}
+
+.btn-delete:hover {
+    background-color: #c0392b;
+}
+
+/* Edit Form Styles */
+.edit-form {
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+}
+
+.edit-form .form-group {
+    margin-bottom: 15px;
+}
+
+.edit-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.edit-actions button {
+    width: auto;
+}
+
+.btn-cancel {
+    background-color: #95a5a6;
+}
+
+.btn-cancel:hover {
+    background-color: #7f8c8d;
+}
+
+a {
+    color: #3498db;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a:hover {
+    text-decoration: underline;
+}
