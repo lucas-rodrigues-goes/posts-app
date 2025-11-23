@@ -2,12 +2,11 @@ import express from 'express';
 import { logger } from '../services/logging.js';
 
 const router = express.Router();
-const DATABASE_SERVER_URL = process.env.DATABASE_URL || 'http://localhost:5000';
 
 // Helper function to forward requests
 async function forwardRequest(req, res, path) {
     try {
-        const url = `${DATABASE_SERVER_URL}${path}`;
+        const url = `${process.env.DATABASE_ADDRESS}${path}`;
         
         const options = {
             method: req.method,
